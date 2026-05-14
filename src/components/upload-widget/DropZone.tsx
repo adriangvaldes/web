@@ -1,20 +1,21 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 interface Props {
   isDragging: boolean
-  fileCount: number
   onFilesSelected: (files: File[]) => void
   onDragEnter: () => void
   onDragLeave: () => void
   onDrop: (files: File[]) => void
 }
 
-export function DropZone({ isDragging, fileCount, onFilesSelected, onDragEnter, onDragLeave, onDrop }: Props) {
+export function DropZone({ isDragging, onFilesSelected, onDragEnter, onDragLeave, onDrop }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
+  const [draggingCount, setDraggingCount] = useState(0)
 
   const handleDragEnter = (e: React.DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    setDraggingCount(e.dataTransfer.items.length)
     onDragEnter()
   }
 
@@ -23,6 +24,7 @@ export function DropZone({ isDragging, fileCount, onFilesSelected, onDragEnter, 
     e.stopPropagation()
     // Only trigger if leaving the container itself (not a child)
     if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setDraggingCount(0)
       onDragLeave()
     }
   }
@@ -35,8 +37,11 @@ export function DropZone({ isDragging, fileCount, onFilesSelected, onDragEnter, 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    setDraggingCount(0)
     onDragLeave() // reset drag state
-    const files = Array.from(e.dataTransfer.files)
+    const files = Array.from(e.dataTransfer.files).filter(
+      f => f.type === 'image/png' || f.type === 'image/jpeg'
+    )
     if (files.length > 0) {
       onDrop(files)
     }
@@ -70,7 +75,7 @@ export function DropZone({ isDragging, fileCount, onFilesSelected, onDragEnter, 
       >
         {isDragging ? (
           <div className="flex flex-col items-center gap-2">
-            <span className="text-indigo-100 text-xs">{`Add ${fileCount} files to the upload queue`}</span>
+            <span className="text-indigo-100 text-xs">{`Add ${draggingCount} files to the upload queue`}</span>
             <span className="text-zinc-400 text-[11px]">Only PNG and JPG (4mb max)</span>
           </div>
         ) : (

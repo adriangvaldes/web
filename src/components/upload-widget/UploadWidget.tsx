@@ -43,7 +43,6 @@ export function UploadWidget() {
         <div className="px-5">
           <DropZone
             isDragging={isDragging}
-            fileCount={files.length}
             onFilesSelected={handleFilesAdded}
             onDragEnter={() => setIsDragging(true)}
             onDragLeave={() => setIsDragging(false)}
@@ -60,7 +59,7 @@ export function UploadWidget() {
           {files.length === 0 ? (
             <span className="text-zinc-400 text-xs">No uploads added to the queue</span>
           ) : (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 max-h-[280px] overflow-y-auto">
               {files.map(f => (
                 <FileItem key={f.id} file={f} onDelete={handleDelete} />
               ))}

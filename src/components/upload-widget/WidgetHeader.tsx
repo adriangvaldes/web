@@ -8,7 +8,7 @@ interface Props {
 export function WidgetHeader({ isMinimized, onToggleMinimize }: Props) {
   if (isMinimized) {
     return (
-      <div className="flex flex-row items-center justify-between px-4 py-3 bg-white/[0.02] border-b border-zinc-800 rounded-lg gap-5">
+      <div className="flex flex-row items-center justify-between px-4 py-3 bg-white/[0.02] rounded-lg gap-5">
         <div className="flex items-center gap-1.5">
           <LoaderCircle size={16} className="text-zinc-400 shrink-0" />
           <span className="text-white text-sm font-medium">Upload files</span>
