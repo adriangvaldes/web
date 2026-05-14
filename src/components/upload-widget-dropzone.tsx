@@ -9,7 +9,13 @@ interface Props {
   onDrop: (files: File[]) => void
 }
 
-export function UploadWidgetDropZone({ isDragging, onFilesSelected, onDragEnter, onDragLeave, onDrop }: Props) {
+export function UploadWidgetDropZone({
+  isDragging,
+  onFilesSelected,
+  onDragEnter,
+  onDragLeave,
+  onDrop,
+}: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [draggingCount, setDraggingCount] = useState(0)
 
@@ -41,7 +47,7 @@ export function UploadWidgetDropZone({ isDragging, onFilesSelected, onDragEnter,
     setDraggingCount(0)
     onDragLeave() // reset drag state
     const files = Array.from(e.dataTransfer.files).filter(
-      f => f.type === 'image/png' || f.type === 'image/jpeg'
+      (f) => f.type === 'image/png' || f.type === 'image/jpeg',
     )
     if (files.length > 0) {
       onDrop(files)

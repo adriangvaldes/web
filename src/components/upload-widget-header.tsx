@@ -1,11 +1,12 @@
-import { Minimize2, Maximize2, LoaderCircle } from 'lucide-react'
+import { LoaderCircle, Maximize2, Minimize2 } from 'lucide-react'
+import { Button } from './ui/button'
 
 interface Props {
   isMinimized: boolean
   onToggleMinimize: () => void
 }
 
-export function WidgetHeader({ isMinimized, onToggleMinimize }: Props) {
+export function UploadWidgetHeader({ isMinimized, onToggleMinimize }: Props) {
   if (isMinimized) {
     return (
       <div className="flex flex-row items-center justify-between px-4 py-3 bg-white/[0.02] rounded-lg gap-5">
@@ -25,11 +26,13 @@ export function WidgetHeader({ isMinimized, onToggleMinimize }: Props) {
   return (
     <div className="relative flex items-center px-5 py-4 bg-white/[0.02] border-b border-zinc-800 rounded-t-lg">
       <span className="text-white text-sm font-medium">Upload files</span>
-      <Minimize2
-        size={16}
-        className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-400 cursor-pointer hover:text-zinc-200"
-        onClick={onToggleMinimize}
-      />
+      <Button>
+        <Minimize2
+          size={16}
+          className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-400 cursor-pointer hover:text-zinc-200"
+          onClick={onToggleMinimize}
+        />
+      </Button>
     </div>
   )
 }

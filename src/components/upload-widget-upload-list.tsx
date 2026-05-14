@@ -1,4 +1,4 @@
-import { ImageUp, Trash2, RefreshCw } from 'lucide-react'
+import { ImageUp, RefreshCw, Trash2 } from 'lucide-react'
 import type { UploadFile } from './types'
 
 interface Props {
@@ -16,22 +16,22 @@ function getStatusDisplay(status: UploadFile['status'], progress: number) {
     case 'uploading':
       return {
         text: `${progress}% uploaded`,
-        className: 'text-zinc-400'
+        className: 'text-zinc-400',
       }
     case 'failed':
       return {
         text: 'Upload failed',
-        className: 'text-red-400'
+        className: 'text-red-400',
       }
     case 'success':
       return {
         text: 'Upload finished',
-        className: 'text-emerald-300'
+        className: 'text-emerald-300',
       }
   }
 }
 
-export function FileItem({ file, onDelete }: Props) {
+export function UploadWidgetUploadList({ file, onDelete }: Props) {
   const statusDisplay = getStatusDisplay(file.status, file.progress)
 
   return (
@@ -40,9 +40,7 @@ export function FileItem({ file, onDelete }: Props) {
         {/* Row 1: icon + filename */}
         <div className="flex items-center gap-1 pr-10">
           <ImageUp size={12} className="text-zinc-300 shrink-0" />
-          <span className="text-white font-medium text-xs leading-none truncate">
-            {file.name}
-          </span>
+          <span className="text-white font-medium text-xs leading-none truncate">{file.name}</span>
         </div>
 
         {/* Row 2: size + divider + status */}
