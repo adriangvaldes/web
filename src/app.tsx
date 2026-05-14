@@ -1,7 +1,10 @@
-export function App() {
+import { UploadWidget } from './components/upload-widget'
 
+export function App() {
   return (
-    <h1>Hello World</h1>
+    <div className="min-h-screen bg-[#29292E] flex items-center justify-center">
+      <UploadWidget />
+    </div>
   )
 }
 
