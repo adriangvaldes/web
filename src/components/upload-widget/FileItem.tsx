@@ -1,5 +1,5 @@
 import { ImageUp, Trash2, RefreshCw } from 'lucide-react'
-import { UploadFile } from './types'
+import type { UploadFile } from './types'
 
 interface Props {
   file: UploadFile

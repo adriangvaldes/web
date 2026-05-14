@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UploadFile } from './types'
+import type { UploadFile } from './types'
 import { WidgetHeader } from './WidgetHeader'
 import { DropZone } from './DropZone'
 import { FileItem } from './FileItem'
