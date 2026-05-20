@@ -2,6 +2,7 @@
 
 @theme {
   --font-inter: "Inter", sans-serif;
+  --text-xxs: 10px;
 }
 
 body {
