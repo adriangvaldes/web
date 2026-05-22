@@ -35,7 +35,7 @@ export function UploadWidgetUploadItem({ upload, uploadId }: UploadWidgetUploadI
       <div className="flex flex-col gap-1">
         <span className="text-xs font-medium flex items-center gap-1">
           <ImageUp className="size-3 text-zinc-300" strokeWidth={1.5} />
-          <span className="max-w-[180px] truncate">{upload.name}</span>
+          <span className="max-w-45 truncate">{upload.name}</span>
         </span>
 
         <span className="text-xxs text-zinc-400 flex gap-1.5 items-center">
